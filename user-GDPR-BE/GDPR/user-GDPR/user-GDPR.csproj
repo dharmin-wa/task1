@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>user_GDPR</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="3.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\user_GDPR.Models\user_GDPR.Models.csproj" />
+    <ProjectReference Include="..\user_GDPR.Repositories\user_GDPR.Repositories.csproj" />
+    <ProjectReference Include="..\user_GDPR.Services\user_GDPR.Services.csproj" />
+  </ItemGroup>
+
+</Project>

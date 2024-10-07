@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\user_GDPR.Models\user_GDPR.Models.csproj" />
+    <ProjectReference Include="..\user_GDPR.Repositories\user_GDPR.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>

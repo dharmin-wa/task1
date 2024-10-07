@@ -1,0 +1,15 @@
+E:\Development-2024\GDPR\GDPR\user_GDPR.Repositories\bin\Release\net8.0\user_GDPR.Repositories.deps.json
+E:\Development-2024\GDPR\GDPR\user_GDPR.Repositories\bin\Release\net8.0\user_GDPR.Repositories.dll
+E:\Development-2024\GDPR\GDPR\user_GDPR.Repositories\bin\Release\net8.0\user_GDPR.Repositories.pdb
+E:\Development-2024\GDPR\GDPR\user_GDPR.Repositories\bin\Release\net8.0\user_GDPR.Models.dll
+E:\Development-2024\GDPR\GDPR\user_GDPR.Repositories\bin\Release\net8.0\user_GDPR.Models.pdb
+E:\Development-2024\GDPR\GDPR\user_GDPR.Repositories\obj\Release\net8.0\user_GDPR.Repositories.csproj.AssemblyReference.cache
+E:\Development-2024\GDPR\GDPR\user_GDPR.Repositories\obj\Release\net8.0\user_GDPR.Repositories.GeneratedMSBuildEditorConfig.editorconfig
+E:\Development-2024\GDPR\GDPR\user_GDPR.Repositories\obj\Release\net8.0\user_GDPR.Repositories.AssemblyInfoInputs.cache
+E:\Development-2024\GDPR\GDPR\user_GDPR.Repositories\obj\Release\net8.0\user_GDPR.Repositories.AssemblyInfo.cs
+E:\Development-2024\GDPR\GDPR\user_GDPR.Repositories\obj\Release\net8.0\user_GDPR.Repositories.csproj.CoreCompileInputs.cache
+E:\Development-2024\GDPR\GDPR\user_GDPR.Repositories\obj\Release\net8.0\user_GDP.6246F80F.Up2Date
+E:\Development-2024\GDPR\GDPR\user_GDPR.Repositories\obj\Release\net8.0\user_GDPR.Repositories.dll
+E:\Development-2024\GDPR\GDPR\user_GDPR.Repositories\obj\Release\net8.0\refint\user_GDPR.Repositories.dll
+E:\Development-2024\GDPR\GDPR\user_GDPR.Repositories\obj\Release\net8.0\user_GDPR.Repositories.pdb
+E:\Development-2024\GDPR\GDPR\user_GDPR.Repositories\obj\Release\net8.0\ref\user_GDPR.Repositories.dll

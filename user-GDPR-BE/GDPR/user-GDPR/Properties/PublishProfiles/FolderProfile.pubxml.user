@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>E:\Publish\User-GDPR</_PublishTargetUrl>
+    <History>True|2024-10-07T15:00:25.6540977Z||;True|2024-10-07T20:15:12.1723678+05:30||;True|2024-10-07T20:08:29.5552166+05:30||;True|2024-10-07T19:38:46.4512772+05:30||;True|2024-10-07T19:21:49.2775054+05:30||;True|2024-10-07T19:09:11.1186348+05:30||;True|2024-10-07T19:03:37.5534075+05:30||;True|2024-10-07T18:29:02.0091700+05:30||;True|2024-10-07T18:24:38.1124595+05:30||;True|2024-10-07T18:19:15.4491492+05:30||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>
