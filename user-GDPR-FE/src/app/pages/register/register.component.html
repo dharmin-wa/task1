@@ -1,0 +1,60 @@
+<div class="register-container">
+  <h2>Register</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" formControlName="firstName" placeholder="Enter your first name">
+      <div *ngIf="registerForm.controls['firstName'].invalid && registerForm.controls['firstName'].touched" class="error">
+        First name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" formControlName="lastName" placeholder="Enter your last name">
+      <div *ngIf="registerForm.controls['lastName'].invalid && registerForm.controls['lastName'].touched" class="error">
+        Last name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" formControlName="email" placeholder="Enter your email">
+      <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched" class="error">
+        Valid email is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password" placeholder="Enter your password">
+      <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched" class="error">
+        Password is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="mobileNo">Mobile Number</label>
+      <input type="text" id="mobileNo" formControlName="mobileNo" placeholder="Enter your mobile number">
+      <div *ngIf="registerForm.controls['mobileNo'].invalid && registerForm.controls['mobileNo'].touched" class="error">
+        Mobile number is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>
+        <input type="checkbox" formControlName="isAdmin"> Is Admin
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>
+        <input type="checkbox" formControlName="isUserConsent"> User Consent Status
+      </label>
+    </div>
+
+    <button type="submit" class="btn-register" [disabled]="registerForm.invalid">Register</button>
+  </form>
+
+  <p>Already have an account? <a routerLink="/login">Login</a></p>
+</div>
