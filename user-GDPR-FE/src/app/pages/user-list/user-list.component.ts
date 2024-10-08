@@ -59,16 +59,7 @@ export class UserListComponent {
 
   deleteUser(userId: any) {
     if (confirm('Are you sure you want to delete this user?')) {
-      // this.userService.deleteUser(userId).subscribe(
-      //   (response) => {
-      //     alert('User deleted successfully!');
-      //     this.loadUsers();
-      //   },
-      //   (error) => {
-      //     alert('Failed to delete user!');
-      //     console.error(error);
-      //   }
-      // );
+     
     }
   }
 }

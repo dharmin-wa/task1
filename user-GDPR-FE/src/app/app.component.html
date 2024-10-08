@@ -1,2 +1,4 @@
-<app-header></app-header>
+<div *ngIf="auth$ | async as auth">
+    <app-header *ngIf="auth.user"></app-header>
+</div>
 <router-outlet />
