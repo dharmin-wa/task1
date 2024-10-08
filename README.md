@@ -32,4 +32,16 @@ These are the most useful commands defined in `package.json`:
 * `npm start` - runs the TypeScript compiler, asset copier, and a server at the same time, all three in "watch mode".
 * `npm run build` - runs the TypeScript compiler and asset copier once.
 
-
+### Database settings
+Update the MongoDB connection settings in the appsettings.json file:
+{
+  "MongoDB": {
+    "ConnectionURI": "your-mongodb-connection-uri",
+    "DatabaseName": "user_GDPR",
+    "CollectionName": "Users"
+  }
+}
+ 
+Run the application using Visual Studio or the terminal
+`dotnet run`
+The application will be accessible with swagger at  https://localhost:{port}/swagger/index.html
