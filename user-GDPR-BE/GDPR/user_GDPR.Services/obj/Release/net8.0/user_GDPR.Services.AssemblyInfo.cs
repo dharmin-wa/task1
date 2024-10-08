@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("user_GDPR.Services")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+898735b6b67e27c314903a203d3c6d32a77bc05e")]
 [assembly: System.Reflection.AssemblyProductAttribute("user_GDPR.Services")]
 [assembly: System.Reflection.AssemblyTitleAttribute("user_GDPR.Services")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

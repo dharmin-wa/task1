@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using log4net;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -15,15 +16,15 @@ namespace user_GDPR.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly ILogger<UserController> _logger;
         private readonly IUserService _userService;
         private readonly TokenRepository _tokenRepository;
+        private readonly ILog _logger;
 
-        public UserController(ILogger<UserController> logger, IUserService userService, TokenRepository tokenRepository)
+        public UserController(IUserService userService, TokenRepository tokenRepository)
         {
-            _logger = logger;
             _userService = userService;
             _tokenRepository = tokenRepository;
+            _logger = LogManager.GetLogger(typeof(UserRepository));
         }
 
         [HttpPost("create")]
@@ -41,6 +42,7 @@ namespace user_GDPR.Controllers
             }
             catch (Exception ex)
             {
+                _logger.Error("create: " + ex.Message);
                 return StatusCode(500, new
                 {
                     StatusCode = 500,
@@ -57,9 +59,9 @@ namespace user_GDPR.Controllers
             try
             {
                 var user = await _userService.GetUserDetails(userId);
-
                 if (user == null)
                 {
+                    _logger.Error("get-detail: User not found.");
                     return NotFound(new
                     {
                         StatusCode = 404,
@@ -75,6 +77,7 @@ namespace user_GDPR.Controllers
             }
             catch (Exception ex)
             {
+                _logger.Error("get-detail: " + ex.Message);
                 return StatusCode(500, new
                 {
                     StatusCode = 500,
@@ -90,6 +93,7 @@ namespace user_GDPR.Controllers
         {
             if (loginRequest == null || string.IsNullOrEmpty(loginRequest.Email) || string.IsNullOrEmpty(loginRequest.Password))
             {
+                _logger.Error("Login: Email and password are required.");
                 return BadRequest(new
                 {
                     StatusCode = 400,
@@ -103,6 +107,7 @@ namespace user_GDPR.Controllers
 
                 if (user == null)
                 {
+                    _logger.Error("Login: Invalid email or password.");
                     return Unauthorized(new
                     {
                         StatusCode = 401,
@@ -128,6 +133,7 @@ namespace user_GDPR.Controllers
             }
             catch (Exception ex)
             {
+                _logger.Error("Login: " + ex.Message);
                 return StatusCode(500, new
                 {
                     StatusCode = 500,
@@ -139,22 +145,10 @@ namespace user_GDPR.Controllers
 
         [Authorize(Roles = "ADMIN")]
         [HttpGet("get-all")]
-        public async Task<IActionResult> GetAllUsers(bool isAdmin)
+        public async Task<IActionResult> GetAllUsers()
         {
             try
             {
-                if (!isAdmin)
-                {
-                    return new ObjectResult(new
-                    {
-                        StatusCode = 403,
-                        Message = "Access denied. Only admins can retrieve all users."
-                    })
-                    {
-                        StatusCode = StatusCodes.Status403Forbidden
-                    };
-                }
-
                 var users = await _userService.GetAllUsers();
                 return Ok(new
                 {
@@ -164,6 +158,7 @@ namespace user_GDPR.Controllers
             }
             catch (Exception ex)
             {
+                _logger.Error("get-all: " + ex.Message);
                 return StatusCode(500, new
                 {
                     StatusCode = 500,
@@ -180,9 +175,9 @@ namespace user_GDPR.Controllers
             try
             {
                 var isDeleted = await _userService.DeleteUser(userId);
-
                 if (!isDeleted)
                 {
+                    _logger.Error("delete-user: User not found or already deleted.");
                     return NotFound(new
                     {
                         StatusCode = 404,
@@ -198,6 +193,7 @@ namespace user_GDPR.Controllers
             }
             catch (Exception ex)
             {
+                _logger.Error("delete-user: " + ex.Message);
                 return StatusCode(500, new
                 {
                     StatusCode = 500,

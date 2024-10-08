@@ -15,6 +15,7 @@ var logRepository = LogManager.GetRepository(System.Reflection.Assembly.GetEntry
 XmlConfigurator.Configure(logRepository, new System.IO.FileInfo("log4net.config"));
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddLog4Net("log4net.config");
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -438,7 +438,8 @@
         "dependencies": {
           "Microsoft.Extensions.Configuration": "8.0.0",
           "Microsoft.Extensions.Options": "8.0.2",
-          "MongoDB.Driver": "2.29.0"
+          "MongoDB.Driver": "2.29.0",
+          "log4net": "3.0.1"
         },
         "runtime": {
           "user_GDPR.Models.dll": {}

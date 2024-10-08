@@ -31,7 +31,7 @@ namespace user_GDPR.Services
         public async Task<Users> CreateUser(Users user)
         {
             user.Email = _encryptionHelper.DecryptString(user.Email);
-            user.Password = _encryptionHelper.EncryptString(user.Password);
+            user.Password = _encryptionHelper.DecryptString(user.Password);
             user.MobileNo = _encryptionHelper.DecryptString(user.MobileNo);
             return await _userRepository.CreateUser(user);
         }

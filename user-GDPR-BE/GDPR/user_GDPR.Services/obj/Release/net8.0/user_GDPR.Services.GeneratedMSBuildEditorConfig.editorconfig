@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = user_GDPR.Services
-build_property.ProjectDir = E:\Development-2024\GDPR\GDPR\user_GDPR.Services\
+build_property.ProjectDir = E:\Development-2024\GDPR\task1\user-GDPR-BE\GDPR\user_GDPR.Services\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
