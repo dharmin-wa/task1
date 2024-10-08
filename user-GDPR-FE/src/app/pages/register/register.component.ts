@@ -33,7 +33,6 @@ export class RegisterComponent {
 
   onSubmit(): void {
     if (this.registerForm.valid) {
-      debugger
       const userData = this.registerForm.value;
       userData.email = this.encryptionService.encrypt(userData.email);
       userData.password = this.encryptionService.encrypt(userData.password);

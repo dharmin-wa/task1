@@ -25,7 +25,17 @@ export class EncryptionService {
   }
 
   decrypt(encryptedData: string): string {
-    const bytes = CryptoJS.AES.decrypt(encryptedData, this.secretKey);
-    return bytes.toString(CryptoJS.enc.Utf8);
+    // Convert the secret key to a WordArray (must be 32 bytes for AES-256)
+    const keyWordArray = CryptoJS.enc.Utf8.parse(this.secretKey);
+
+    // Decrypt the encrypted data using AES with the given key and IV
+    const decrypted = CryptoJS.AES.decrypt(encryptedData, keyWordArray, {
+      iv: this.iv,
+      mode: CryptoJS.mode.CBC,  // CBC mode to match your C# code
+      padding: CryptoJS.pad.Pkcs7 // PKCS7 padding
+    });
+
+    // Convert the decrypted data to a UTF-8 string and return it
+    return decrypted.toString(CryptoJS.enc.Utf8);
   }
 }

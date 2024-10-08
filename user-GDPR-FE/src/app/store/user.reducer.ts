@@ -1,19 +1,19 @@
 // src/app/store/user.reducer.ts
 import { createReducer, on } from '@ngrx/store';
-import { loadUsersSuccess, loadUsersFailure } from './user.actions';
+import { loadUsersSuccess, loadUsersFailure, loadUserById, loadUserByIdSuccess, loadUserByIdFailure } from './user.actions';
 import { User } from '../reusable/modals/user.modal';
 
 export interface UserState {
   users: User[];
   error: string | null;
   loading: boolean;
-  user: User | null;
+  selectedUser: User | null;
 }
 
 export const initialState: UserState = {
   users: [],
   error: null,
-  user: null,
+  selectedUser: null,
   loading: false,
 };
 
@@ -28,5 +28,20 @@ export const userReducer = createReducer(
     ...state,
     error: error,
   })),
- 
+  on(loadUserById, state => ({
+    ...state,
+    loading: true,
+    error: null,
+  })),
+  on(loadUserByIdSuccess, (state, { user }) => ({
+    ...state,
+    selectedUser: user,
+    loading: false,
+    error: null,
+  })),
+  on(loadUserByIdFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+  }))
 );

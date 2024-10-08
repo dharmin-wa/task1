@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { HttpClient } from '@angular/common/http';
-import { loadUsers, loadUsersSuccess, loadUsersFailure } from './user.actions';
+import { loadUsers, loadUsersSuccess, loadUsersFailure, loadUserById, loadUserByIdSuccess, loadUserByIdFailure } from './user.actions';
 import { catchError, map, mergeMap, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { User } from '../reusable/modals/user.modal';
@@ -18,9 +18,21 @@ export class UserEffects {
     this.actions$.pipe(
       ofType(loadUsers),
       mergeMap(() =>
-        this.http.get<{ users: User[] }>(`${this.baseUrl}/get-all?isAdmin=true`).pipe(
+        this.http.get<{ users: User[] }>(`${this.baseUrl}/get-all`).pipe(
           map(response => loadUsersSuccess({ users: response.users })),
           catchError(error => of(loadUsersFailure({ error: error.message })))
+        )
+      )
+    )
+  );
+
+  loadUserById$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loadUserById),
+      mergeMap(action =>
+        this.http.get<{ user: User }>(`${this.baseUrl}/get-detail?userId=${action.email}`).pipe(
+          map(user => loadUserByIdSuccess(user)), // Dispatch success action
+          catchError(error => of(loadUserByIdFailure({ error }))) // Dispatch failure action
         )
       )
     )

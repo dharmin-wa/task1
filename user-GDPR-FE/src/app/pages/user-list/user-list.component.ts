@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { loadUsers } from '../../store/user.actions';
+import { loadUserById, loadUsers } from '../../store/user.actions';
 import { User } from '../../reusable/modals/user.modal';
 import { UserState } from '../../store/user.reducer';
 import { AuthState } from '../../store/auth.reducer';
+import { EncryptionService } from '../../reusable/services/encryption.service';
 
 @Component({
   selector: 'app-user-list',
@@ -14,18 +15,49 @@ import { AuthState } from '../../store/auth.reducer';
 export class UserListComponent {
   users$: Observable<User[]>;
   auth$: Observable<AuthState>;
-  isAdmin: boolean = true;
+  isAdmin$: Observable<boolean>; // Change to observable
+  isAdmin = false; // Initialize as false
+  id = ''
+  id$: Observable<string>; // Change to observable
 
-  constructor(private store: Store<{ users: UserState , auth: AuthState}>) {
+  selectedUser$: Observable<User | null>;
+
+  constructor(private encryptionService: EncryptionService, private store: Store<{ users: UserState, auth: AuthState }>) {
     this.users$ = store.select(state => state.users.users);
     this.auth$ = this.store.select('auth');
+    this.selectedUser$ = this.store.select(state => state.users.selectedUser);
+
+    // Use map to extract isAdmin from auth$
+    this.isAdmin$ = this.auth$.pipe(
+      map(auth => auth?.user?.user.isAdmin || false)
+    );
+
+    // Subscribe to isAdmin$ to update local isAdmin variable
+    this.isAdmin$.subscribe(isAdmin => {
+      this.isAdmin = isAdmin;
+    });
+
+    // Use map to extract isAdmin from auth$
+    this.id$ = this.auth$.pipe(
+      map(auth => auth?.user?.user.id || '')
+    );
+
+    // Subscribe to isAdmin$ to update local isAdmin variable
+    this.id$.subscribe(id => {
+      this.id = id;
+    });
   }
 
   ngOnInit() {
-    this.store.dispatch(loadUsers());
+    if (this.isAdmin) {
+      this.store.dispatch(loadUsers());
+    }
+    else {
+      this.store.dispatch(loadUserById({ email: this.id }));
+    }
   }
 
-  deleteUser(userId:any){
+  deleteUser(userId: any) {
     if (confirm('Are you sure you want to delete this user?')) {
       // this.userService.deleteUser(userId).subscribe(
       //   (response) => {

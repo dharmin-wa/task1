@@ -1,10 +1,9 @@
 <div class="home-container">
-
     <div *ngIf="auth$ | async as auth">
-        <div *ngIf="auth.user">Welcome  {{auth.user.user.firstName }}</div>
+        <h2 *ngIf="auth.user">Welcome {{auth.user.user.firstName }}</h2>
     </div>
 
-    <div *ngIf="isAdmin && (users$ | async) as users">
+    <div *ngIf="isAdmin && (users$ | async) as users;">
         <h3>All Registered Users</h3>
         <table class="user-grid">
             <thead>
@@ -30,5 +29,16 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="!isAdmin">
+        <h3>Your Information</h3>
+        <div *ngIf="(selectedUser$ | async) as selectedUser;">
+            <p><strong>First Name:</strong> {{ selectedUser.firstName }}</p>
+            <p><strong>Last Name:</strong> {{ selectedUser.lastName }}</p>
+            <p><strong>Email:</strong> {{ selectedUser.email }}</p>
+            <p><strong>Mobile:</strong> {{ selectedUser.mobileNo }}</p>
+            <p><strong>Admin:</strong> {{ selectedUser.isAdmin ? 'Yes' : 'No' }}</p>
+        </div>
     </div>
 </div>
