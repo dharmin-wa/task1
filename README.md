@@ -97,6 +97,7 @@ These are the most useful commands defined in `package.json`:
 ![enter image description here](./doc/user.png)
 
 
+
 ### Database settings
 
 Update the MongoDB connection settings in the appsettings.json file:
@@ -120,3 +121,51 @@ Run the application using Visual Studio or the terminal
 `dotnet run`
 
 The application will be accessible with swagger at https://localhost:{port}/swagger/index.html
+
+
+.NET/C# web application
+
+### Clone the repo
+
+```shell
+
+git clone https://github.com/dharmin-wa/Task1.git
+
+cd Task1
+
+cd user-GDPR-BE
+
+```
+
+## Features
+
+- **MongoDB Integration**: Utilizes the MongoDB driver to perform CRUD operations (Create, Read, Update, Delete) on a Users collection.
+
+- **Logging with log4net**: Integrates log4net for logging various operations, including informational logs for successful actions and error logs for exceptions.
+
+- **Data Encryption**: Employs an IEncryptionRepository to encrypt sensitive user information (e.g., email, password, mobile number) before storing it in the database and decrypts it upon retrieval.
+
+- **User Consent Verification**: Checks whether the user has given consent (using the IsUserConsent property) before creating a user.
+
+- **Error Handling**: Implements try-catch blocks to manage exceptions, particularly for MongoDB-specific errors and general exceptions, ensuring that all errors are logged appropriately.
+
+- **Indexing**: Creates a compound index on the IsDeleted and Id fields to optimize query performance when fetching users.
+
+- **Asynchronous Programming**: Methods are asynchronous, utilizing async/await for non-blocking database calls, which enhances scalability.
+
+- **User Authentication**: The AuthenticateUser method validates user credentials by encrypting the input email and password and comparing them with the stored values.
+
+
+## Technologies Used
+
+- **C#**: The programming language used for development.
+
+- **ASP.NET Core**: Framework for building web applications.
+
+- **MongoDB**: NoSQL database for storing user information.
+
+- **log4net**: Logging library for tracking application events.
+
+- **Dependency Injection**: Used for managing service dependencies.
+
+- **BSON**: Data format used by MongoDB.
