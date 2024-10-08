@@ -7,6 +7,6 @@ export interface User {
   isDeleted: boolean;
   isUserConsent: boolean;
   mobileNo: string;
-  _id: string
+  id: string
 
 }

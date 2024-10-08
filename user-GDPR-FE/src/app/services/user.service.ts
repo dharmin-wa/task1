@@ -45,6 +45,6 @@ export class UserService {
       Authorization: `Bearer ${token}`, // Include the token in the headers
     });
 
-    return this.http.delete(`${this.baseUrl}/delete/${userId}`, { headers });
+    return this.http.get(`${this.baseUrl}/delete-user?userId=${userId}`, { headers });
   }
 }

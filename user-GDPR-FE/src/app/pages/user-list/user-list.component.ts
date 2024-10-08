@@ -6,6 +6,7 @@ import { User } from '../../reusable/modals/user.modal';
 import { UserState } from '../../store/user.reducer';
 import { AuthState } from '../../store/auth.reducer';
 import { EncryptionService } from '../../reusable/services/encryption.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -22,7 +23,7 @@ export class UserListComponent {
 
   selectedUser$: Observable<User | null>;
 
-  constructor(private encryptionService: EncryptionService, private store: Store<{ users: UserState, auth: AuthState }>) {
+  constructor(private userService: UserService, private store: Store<{ users: UserState, auth: AuthState }>) {
     this.users$ = store.select(state => state.users.users);
     this.auth$ = this.store.select('auth');
     this.selectedUser$ = this.store.select(state => state.users.selectedUser);
@@ -59,7 +60,16 @@ export class UserListComponent {
 
   deleteUser(userId: any) {
     if (confirm('Are you sure you want to delete this user?')) {
-     
+      this.userService.deleteUser(userId).subscribe(
+        (response) => {
+          alert('User deleted successfully!');
+          this.store.dispatch(loadUsers());
+        },
+        (error) => {
+          alert('Failed to delete user!');
+          console.error(error);
+        }
+      );
     }
   }
 }
