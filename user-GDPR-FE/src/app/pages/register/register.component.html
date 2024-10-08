@@ -4,7 +4,8 @@
     <div class="form-group">
       <label for="firstName">First Name</label>
       <input type="text" id="firstName" formControlName="firstName" placeholder="Enter your first name">
-      <div *ngIf="registerForm.controls['firstName'].invalid && registerForm.controls['firstName'].touched" class="error">
+      <div *ngIf="registerForm.controls['firstName'].invalid && registerForm.controls['firstName'].touched"
+        class="error">
         First name is required.
       </div>
     </div>
@@ -54,6 +55,11 @@
     </div>
 
     <button type="submit" class="btn-register" [disabled]="registerForm.invalid">Register</button>
+
+    <!-- Show error if exists -->
+    <div *ngIf="auth$ | async as auth">
+      <div *ngIf="auth.error">{{ auth.error }}</div>
+    </div>
   </form>
 
   <p>Already have an account? <a routerLink="/login">Login</a></p>

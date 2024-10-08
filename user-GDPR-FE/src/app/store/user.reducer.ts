@@ -6,11 +6,15 @@ import { User } from '../reusable/modals/user.modal';
 export interface UserState {
   users: User[];
   error: string | null;
+  loading: boolean;
+  user: User | null;
 }
 
 export const initialState: UserState = {
   users: [],
   error: null,
+  user: null,
+  loading: false,
 };
 
 export const userReducer = createReducer(
@@ -23,5 +27,6 @@ export const userReducer = createReducer(
   on(loadUsersFailure, (state, { error }) => ({
     ...state,
     error: error,
-  }))
+  })),
+ 
 );

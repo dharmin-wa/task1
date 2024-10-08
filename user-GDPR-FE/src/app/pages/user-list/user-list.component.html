@@ -1,5 +1,34 @@
-<div *ngIf="(users$ | async) as users">
-    <ul>
-        <li *ngFor="let user of users">{{ user.firstName }} - {{ user.email }}</li>
-    </ul>
+<div class="home-container">
+
+    <div *ngIf="auth$ | async as auth">
+        <div *ngIf="auth.user">Welcome  {{auth.user.user.firstName }}</div>
+    </div>
+
+    <div *ngIf="isAdmin && (users$ | async) as users">
+        <h3>All Registered Users</h3>
+        <table class="user-grid">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Admin</th>
+                    <th>IsDeleted</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.mobileNo }}</td>
+                    <td>{{ user.isAdmin ? 'Yes' : 'No' }}</td>
+                    <td>
+                        <button (click)="deleteUser(user._id)">Delete</button> <!-- Delete button -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

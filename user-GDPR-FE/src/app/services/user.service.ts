@@ -32,7 +32,7 @@ export class UserService {
 
   // Get all users
   getAllUsers(): Observable<any> {
-    const token = localStorage.getItem('token'); // Change 'token' to your actual token key
+    const token = localStorage.getItem('authToken'); // Change 'authToken' to your actual token key
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`, // Add Bearer token
     });
@@ -40,7 +40,7 @@ export class UserService {
   }
 
   deleteUser(userId: string): Observable<any> {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('authToken');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`, // Include the token in the headers
     });

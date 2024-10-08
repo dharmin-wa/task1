@@ -6,6 +6,7 @@ export interface User {
   isAdmin: boolean;
   isDeleted: boolean;
   isUserConsent: boolean;
-  mobileNo:string;
+  mobileNo: string;
+  _id: string
 
 }

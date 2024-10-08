@@ -18,6 +18,10 @@
     </div>
 
     <button type="submit" class="btn-login" [disabled]="loginForm.invalid">Login</button>
+    <div *ngIf="auth$ | async as auth">
+      <div *ngIf="auth.loading">Logging in...</div>
+      <div *ngIf="auth.error">{{ auth.error }}</div>
+    </div>
   </form>
 
   <p>Don't have an account? <a routerLink="/register">Register</a></p>

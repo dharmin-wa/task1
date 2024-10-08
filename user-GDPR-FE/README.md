@@ -1,27 +1,35 @@
-# UserGDPR
+# User login/register application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.1.
+This is a test project to demonstrate using Intern with Angular, ngrx and api calling. 
 
-## Development server
+## Get started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Clone the repo
 
-## Code scaffolding
+```shell
+git clone https://github.com/dharmin-wa/Task1.git
+cd Task1
+cd user-GDPR-FE
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Install npm packages
 
-## Build
+Install the `npm` packages described in the `package.json` and verify that it works:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```shell
+npm install
+npm start
+```
 
-## Running unit tests
+The `npm start` command builds (compiles TypeScript and copies assets) the application into `dist/`, watches for changes to the source files
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Shut it down manually with `Ctrl-C`.
 
-## Running end-to-end tests
+#### npm scripts
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+These are the most useful commands defined in `package.json`:
 
-## Further help
+* `npm start` - runs the TypeScript compiler, asset copier, and a server at the same time, all three in "watch mode".
+* `npm run build` - runs the TypeScript compiler and asset copier once.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+

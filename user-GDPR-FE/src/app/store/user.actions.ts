@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { User } from '../reusable/modals/user.modal';
+import {  User } from '../reusable/modals/user.modal';
 
 export const loadUsers = createAction('[User] Load Users');
 export const loadUsersSuccess = createAction(
@@ -10,4 +10,3 @@ export const loadUsersFailure = createAction(
   '[User] Load Users Failure',
   props<{ error: string }>()
 );
-
